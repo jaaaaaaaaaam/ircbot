@@ -18,5 +18,6 @@ vi .env
   - [ ] Join channels based on comma separated list in .env
 - TVMaze modules
   - [x] Finish Show struct for JSON data from TVMaze
-  - [ ] Show desired output from show
+  - [x] Show desired output from show
+  - [ ] Finish adding options for output
   - [ ] Show the user suggestions if their search returns nothing
