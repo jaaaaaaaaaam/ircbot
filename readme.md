@@ -17,6 +17,6 @@ vi .env
 - Bot Basics
   - [ ] Join channels based on comma separated list in .env
 - TVMaze modules
-  - [ ] Finish Show struct for JSON data from TVMaze
+  - [x] Finish Show struct for JSON data from TVMaze
   - [ ] Show desired output from show
   - [ ] Show the user suggestions if their search returns nothing
