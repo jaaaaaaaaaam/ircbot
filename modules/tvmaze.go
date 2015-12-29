@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	//"strconv"
+	"os"
 	"strings"
 )
 
@@ -82,6 +83,18 @@ type ShowLink struct {
 	Href string `json:"href,omitempty"`
 }
 
+func generateString(show Show) string {
+	str := os.Getenv("SHOWSTRING")
+	r := strings.NewReplacer(
+		"#ID#", string(show.ID),
+		"#showname#", show.Name,
+		"#status#", show.Status,
+		"#network.name#", show.Network.Name,
+	)
+	result := r.Replace(str)
+	return result
+}
+
 // ShowLookup looks for the show and then returns a message
 func ShowLookup(search string) string {
 	var show Show
@@ -104,5 +117,6 @@ func ShowLookup(search string) string {
 		fmt.Println(err)
 	}
 	fmt.Println(show.Links.Self.Href)
-	return show.Links.Self.Href
+	returnString := generateString(show)
+	return returnString
 }
