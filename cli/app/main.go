@@ -40,9 +40,7 @@ func main() {
 		// For example !show girls
 		split := strings.SplitAfterN(e.Message(), " ", 2)
 		if strings.HasPrefix(split[0], "!") {
-			con.Privmsg(roomName, "You called a function.")
 			command := strings.TrimPrefix(strings.TrimSpace(split[0]), "!")
-			con.Privmsg(roomName, command)
 			switch command {
 			case "help":
 				con.Privmsg(roomName, "help pls")
