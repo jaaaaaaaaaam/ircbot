@@ -31,6 +31,7 @@ This is used to format the output for !show &lt;showname&gt;
 ### TODO
 - Bot Basics
   - [ ] Join channels based on comma separated list in .env
+  - [ ] Nickserv operations
 - TVMaze modules
   - [x] Finish Show struct for JSON data from TVMaze
   - [x] Show desired output from show
