@@ -43,7 +43,7 @@ type ShowSchedule struct {
 
 // ShowRating is the rating part of the JSON object
 type ShowRating struct {
-	Average float32 `json:"average,omitempty"`
+	Average string `json:"average,omitempty"`
 }
 
 // ShowNetwork is the network part of the JSON object
@@ -88,10 +88,30 @@ func generateString(show Show) string {
 	str := os.Getenv("SHOWSTRING")
 	r := strings.NewReplacer(
 		"#ID#", string(show.ID),
+		"#URL#", show.URL,
 		"#showname#", show.Name,
+		"#type#", show.Type,
+		"#genres#", strings.Join(show.Genres[:], ", "),
 		"#status#", show.Status,
+		"#runtime#", string(show.Runtime),
+		"#premiered#", show.Premiered,
+		"#schedule.time#", show.Schedule.Time,
+		"#schedule.days#", strings.Join(show.Schedule.Days[:], ", "),
+		"#rating#", show.Rating.Average,
 		"#network.name#", show.Network.Name,
+		"#network.country.name#", show.Network.Country.Name,
+		"#network.country.code#", show.Network.Country.Code,
+		"#network.country.timezone#", show.Network.Country.Timezone,
+		"#webchannel#", show.WebChannel,
+		"#externals.tvrage#", string(show.Externals.Tvrage),
+		"#externals.thetvdb#", string(show.Externals.Thetvdb),
+		"#image.medium#", show.Image.Medium,
+		"#image.original#", show.Image.Original,
 		"#summary", show.Summary,
+		"#updated#", string(show.Updated), // Change this to convert to a human timestamp
+		"#links.self#", show.Links.Self.Href,
+		"#links.previous#", show.Links.Previous.Href,
+		"#links.next#", show.Links.Next.Href,
 	)
 	result := r.Replace(str)
 	ret, err := strconv.Unquote(`"` + result + `"`)
