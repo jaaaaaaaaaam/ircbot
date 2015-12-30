@@ -3,9 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/jaaaaaaaaaam/ircbot/modules"
-	"github.com/thoj/go-ircevent"
-	//"strconv"
 	"github.com/joho/godotenv"
+	"github.com/thoj/go-ircevent"
 	"os"
 	"strings"
 )
@@ -30,7 +29,10 @@ func main() {
 	})
 
 	con.AddCallback("JOIN", func(e *irc.Event) {
-		con.Privmsg(roomName, "Welcome...")
+		if e.Nick != os.Getenv("NAME") {
+			welcomeMsg := fmt.Sprintf("Welcome %s...", e.Nick)
+			con.Privmsg(roomName, welcomeMsg)
+		}
 	})
 
 	con.AddCallback("PRIVMSG", func(e *irc.Event) {
