@@ -43,7 +43,7 @@ type ShowSchedule struct {
 
 // ShowRating is the rating part of the JSON object
 type ShowRating struct {
-	Average string `json:"average,omitempty"`
+	Average float32 `json:"average,omitempty"`
 }
 
 // ShowNetwork is the network part of the JSON object
@@ -95,9 +95,9 @@ func generateString(show Show) string {
 		"#status#", show.Status,
 		"#runtime#", string(show.Runtime),
 		"#premiered#", show.Premiered,
-		"#schedule.time#", show.Schedule.Time,
+		"#schedule.time#", string(show.Schedule.Time),
 		"#schedule.days#", strings.Join(show.Schedule.Days[:], ", "),
-		"#rating#", show.Rating.Average,
+		"#rating#", fmt.Sprintf("%f", show.Rating.Average),
 		"#network.name#", show.Network.Name,
 		"#network.country.name#", show.Network.Country.Name,
 		"#network.country.code#", show.Network.Country.Code,
