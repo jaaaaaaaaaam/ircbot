@@ -3,10 +3,11 @@ package tvmaze
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/kennygrant/sanitize"
 	"io/ioutil"
 	"net/http"
-	//"strconv"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -90,9 +91,14 @@ func generateString(show Show) string {
 		"#showname#", show.Name,
 		"#status#", show.Status,
 		"#network.name#", show.Network.Name,
+		"#summary", show.Summary,
 	)
 	result := r.Replace(str)
-	return result
+	ret, err := strconv.Unquote(`"` + result + `"`)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return sanitize.HTML(ret)
 }
 
 // ShowLookup looks for the show and then returns a message
