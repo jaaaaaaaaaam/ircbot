@@ -57,4 +57,5 @@ This is used to format the output for !show &lt;showname&gt;
   - [x] Finish Show struct for JSON data from TVMaze
   - [x] Show desired output from show
   - [x] Finish adding options for output
+  - [ ] Get the dates/episode info for previous/next episodes
   - [ ] Show the user suggestions if their search returns nothing
