@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
-	"github.com/jaaaaaaaaaam/ircbot/modules"
+	"github.com/jaaaaaaaaaam/ircbot/modules/tvmaze"
 	"github.com/joho/godotenv"
 	"github.com/thoj/go-ircevent"
 	"os"
 	"strings"
 )
 
-var roomName = "#spamtest"
-
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
 		fmt.Println("Error loading .env file")
 	}
+
+	roomName := os.Getenv("CHANS")
 
 	con := irc.IRC(os.Getenv("USERNAME"), os.Getenv("NAME"))
 	err = con.Connect(os.Getenv("NETWORK"))
