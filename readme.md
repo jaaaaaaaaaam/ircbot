@@ -44,8 +44,23 @@ This is used to format the output for !show &lt;showname&gt;
 #summary# - The show summary
 #updated# - Unix timestamp of when the info was last updated
 #links.self# - Link to API for the current set of data
-#links.previous# - Link to the API for the previous episode
-#links.next# - Link to the API for the next episode
+#previousEp# - Link to the API for the previous episode
+#nextEp# - Link to the API for the next episode
+```
+
+##### EPSTRING
+
+This is used to format the output of the information for the next episode or previous episode.
+
+```
+#ID# - TVMaze episode ID
+#URL# - TVMaze episode URL
+#name# - Name of the episode
+#season# - The season number
+#episode# - The episode number
+#airdate# - The episode's airdate
+#airstamp# - The full datetime of the episode's airing
+#runtime# - The runtime of the episode in minutes
 ```
 
 
