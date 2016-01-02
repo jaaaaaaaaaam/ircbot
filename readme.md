@@ -59,6 +59,7 @@ This is used to format the output of the information for the next episode or pre
 #season# - The season number
 #episode# - The episode number
 #airdate# - The episode's airdate
+#airtime# - The episode's airtime
 #airstamp# - The full datetime of the episode's airing
 #runtime# - The runtime of the episode in minutes
 ```

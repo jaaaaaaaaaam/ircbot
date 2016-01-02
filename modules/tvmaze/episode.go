@@ -22,6 +22,7 @@ func generateEpisodeString(ep models.Episode) string {
 		"#season#", strconv.Itoa(ep.Season),
 		"#episode#", strconv.Itoa(ep.Episode),
 		"#airdate#", ep.Airdate,
+		"#airtime#", ep.Airtime,
 		"#airstamp#", ep.Airstamp,
 		"#runtime#", string(ep.Runtime),
 	)

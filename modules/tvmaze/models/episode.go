@@ -8,6 +8,7 @@ type Episode struct {
 	Season   int    `json:"season,omitempty"`
 	Episode  int    `json:"number,omitempty"`
 	Airdate  string `json:"airdate,omitempty"`
+	Airtime  string `json:"airtime,omitempty"`
 	Airstamp string `json:"airdate,omitempty"`
 	Runtime  int    `json:"runtime,omitempty"`
 	Image    string `json:"image,omitempty"`
