@@ -17,12 +17,12 @@ var showAPI = "http://api.tvmaze.com/singlesearch/shows?q="
 func generateString(show models.Show) string {
 	var nextLink, prevLink string
 	if show.Links.Next != nil {
-		nextLink = show.Links.Next.Href
+		nextLink = ProcessEpisode(show, "next")
 	} else {
 		nextLink = ""
 	}
 	if show.Links.Previous != nil {
-		prevLink = show.Links.Previous.Href
+		prevLink = ProcessEpisode(show, "prev")
 	} else {
 		prevLink = ""
 	}
@@ -51,8 +51,8 @@ func generateString(show models.Show) string {
 		"#summary", show.Summary,
 		"#updated#", string(show.Updated), // Change this to convert to a human timestamp
 		"#links.self#", show.Links.Self.Href,
-		"#links.previous#", show.Links.Previous.Href,
-		"#links.next#", nextLink,
+		"#previousEp#", prevLink,
+		"#nextEp#", nextLink,
 	)
 	result := r.Replace(str)
 	ret, err := strconv.Unquote(`"` + result + `"`)
@@ -73,7 +73,7 @@ func ShowLookup(search string) string {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
+	//fmt.Println(string(body))
 	if string(body) == "" {
 		// The show doesn't exist
 		return "This show doesn't exist!"
@@ -84,7 +84,6 @@ func ShowLookup(search string) string {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(show.Links.Self.Href)
 	returnString := generateString(show)
 	return returnString
 }
