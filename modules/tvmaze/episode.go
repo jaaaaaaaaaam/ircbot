@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func generateEpisodeString(ep models.ShowEpisode) string {
+func generateEpisodeString(ep models.ShowEpisode, ord string) string {
 	str := os.Getenv("EPSTRING")
 	human := os.Getenv("HUMANIZE")
 	airdate := ""
@@ -25,6 +25,23 @@ func generateEpisodeString(ep models.ShowEpisode) string {
 			fmt.Println(err)
 		}
 		airdate = humanize.Time(time)
+	} else if human == "2" {
+		n := time.Now()
+		time, err := time.Parse("2006-01-02", ep.Airdate)
+		if err != nil {
+			fmt.Println(err)
+		}
+		parsedTime := ""
+		if ord == "next" {
+			diff := time.Sub(n)
+			days := int(diff.Hours() / 24)
+			parsedTime = fmt.Sprintf("in %d days", days)
+		} else {
+			diff := n.Sub(time)
+			days := int(diff.Hours() / 24)
+			parsedTime = fmt.Sprintf("%d days ago", days)
+		}
+		airdate = parsedTime
 	} else {
 		airdate = ep.Airdate
 	}
@@ -65,7 +82,7 @@ func ProcessEpisode(data models.Show, order string) string {
 			if err != nil {
 				fmt.Println(err)
 			}
-			episode := generateEpisodeString(ep)
+			episode := generateEpisodeString(ep, "prev")
 			return episode
 		}
 	}
@@ -81,7 +98,7 @@ func ProcessEpisode(data models.Show, order string) string {
 		if err != nil {
 			fmt.Println(err)
 		}
-		episode := generateEpisodeString(ep)
+		episode := generateEpisodeString(ep, "next")
 		return episode
 	}
 	return "Something went seriously wrong"
