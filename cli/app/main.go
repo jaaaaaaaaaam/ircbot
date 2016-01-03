@@ -17,7 +17,7 @@ func main() {
 
 	roomName := os.Getenv("CHANS")
 
-	con := irc.IRC(os.Getenv("USERNAME"), os.Getenv("NAME"))
+	con := irc.IRC(os.Getenv("NICK"), os.Getenv("USERNAME"))
 	err = con.Connect(os.Getenv("NETWORK"))
 	if err != nil {
 		fmt.Println("Error connecting")

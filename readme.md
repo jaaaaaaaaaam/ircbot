@@ -15,6 +15,35 @@ vi .env
 
 ### .env options
 
+```
+NICK=
+USERNAME=
+CHANS=
+NETWORK=
+SHOWSTRING=
+EPSTRING=
+HUMANIZE=
+```
+
+_example_
+```
+NICK=Awesomebot
+USERNAME=John
+CHANS="#botchan"
+NETWORK=irc.network.net:6667
+SHOWSTRING="\u0002#showname#\u0002 | Next: #nextEp# | Prev: #previousEp# | Premiered: #premiered#"
+EPSTRING="#airdate# - #season#x#episode# - #name#"
+HUMANIZE=1
+```
+
+This will output the following:
+```
+<jaaaaaaaaaam>	!show gotham
+<jambot>          Looking up 'gotham'
+<jambot>          Gotham | Next: 1 month from now - 2x12 - Rise of the Villains: Cold, Dark Night | Prev: 1 month ago - 2x11 - Rise of the Villains: Worse Than a Crime | Premiered: 2014-09-22
+```
+
+
 ##### SHOWSTRING
 
 This is used to format the output for !show &lt;showname&gt;
@@ -73,5 +102,6 @@ This is used to format the output of the information for the next episode or pre
   - [x] Finish Show struct for JSON data from TVMaze
   - [x] Show desired output from show
   - [x] Finish adding options for output
-  - [ ] Get the dates/episode info for previous/next episodes
+  - [x] Get the dates/episode info for previous/next episodes
+  - [x] Show the dates in human readable format e.g. (2 days ago, in 3 months, 2 days etc)
   - [ ] Show the user suggestions if their search returns nothing

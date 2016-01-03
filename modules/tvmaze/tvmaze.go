@@ -19,12 +19,12 @@ func generateString(show models.Show) string {
 	if show.Links.Next != nil {
 		nextLink = ProcessEpisode(show, "next")
 	} else {
-		nextLink = ""
+		nextLink = "No Scheduled Episode"
 	}
 	if show.Links.Previous != nil {
 		prevLink = ProcessEpisode(show, "prev")
 	} else {
-		prevLink = ""
+		prevLink = "No Previous Episode"
 	}
 	str := os.Getenv("SHOWSTRING")
 	r := strings.NewReplacer(
@@ -73,13 +73,10 @@ func ShowLookup(search string) string {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	//fmt.Println(string(body))
 	if string(body) == "" {
-		// The show doesn't exist
 		return "This show doesn't exist!"
 	}
 
-	//err := json.Unmarshal([]byte(string(body)), $show)
 	err = json.Unmarshal(body, &show)
 	if err != nil {
 		fmt.Println(err)
