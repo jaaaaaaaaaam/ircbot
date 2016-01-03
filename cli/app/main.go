@@ -29,7 +29,7 @@ func main() {
 	})
 
 	con.AddCallback("JOIN", func(e *irc.Event) {
-		if e.Nick != os.Getenv("NAME") {
+		if e.Nick != os.Getenv("NICK") {
 			welcomeMsg := fmt.Sprintf("Welcome %s...", e.Nick)
 			con.Privmsg(roomName, welcomeMsg)
 		}
