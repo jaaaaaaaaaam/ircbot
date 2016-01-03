@@ -42,7 +42,39 @@ This will output the following:
 <jambot>          Looking up 'gotham'
 <jambot>          Gotham | Next: 1 month from now - 2x12 - Rise of the Villains: Cold, Dark Night | Prev: 1 month ago - 2x11 - Rise of the Villains: Worse Than a Crime | Premiered: 2014-09-22
 ```
+##### NICK
 
+This is the nick of the bot.
+
+`NICK=Steve`
+
+
+##### USERNAME
+
+This is the username of the bot.
+
+`USERNAME=Robot`
+
+These options would result in the following:
+
+`Steve!Robot@hostname`
+
+```
+<Steve> Bleep Bloop Bloop
+<Steve> I'm an IRC Bot written in Go!
+```
+
+##### CHANS
+
+The channel you would like the bot to join.
+
+`CHAN="#spamroom"`
+
+##### Network
+
+The IRC Network and port you would like the bot to connect to.
+
+`irc.network.com:6667`
 
 ##### SHOWSTRING
 
@@ -93,15 +125,28 @@ This is used to format the output of the information for the next episode or pre
 | #airstamp# | The full datetime of the episode's airing |
 | #runtime# | The runtime of the episode in minutes |
 
+##### HUMANIZE
+
+This option allows the dates of next/previous episodes to be formatted into human readable strings.
+
+There are currently 3 options.
+
+```
+0 - Turns off date humanizations
+1 - Humanization using github.com/dustin/go-humanize (1 month ago, in 1 year) doesn't account for overages, 1 month and 15 days is displayed as 1 month.
+2 - Humanization into days only. (2 days ago/in 125 days)
+```
 
 ### TODO
 - Bot Basics
   - [ ] Join channels based on comma separated list in .env
   - [ ] Nickserv operations
+  - [ ] .env option for greeting other users
 - TVMaze modules
   - [x] Finish Show struct for JSON data from TVMaze
   - [x] Show desired output from show
   - [x] Finish adding options for output
   - [x] Get the dates/episode info for previous/next episodes
   - [x] Show the dates in human readable format e.g. (2 days ago, in 3 months, 2 days etc)
+  - [ ] Allow users to choose a format for date's if humanization is disabled
   - [ ] Show the user suggestions if their search returns nothing
