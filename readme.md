@@ -50,7 +50,7 @@ This is used to format the output for !show &lt;showname&gt;
 
 ###### Current options:
 | Option | Description |
-| - | - |
+| --------- | --------------- |
 | #ID# | TVMaze ID for the show |
 | #URL# | TVMaze url for the show |
 | #showname# | Name of the show |
@@ -82,7 +82,7 @@ This is used to format the output for !show &lt;showname&gt;
 This is used to format the output of the information for the next episode or previous episode.
 
 | Option | Description |
-| - | - |
+| --------- | --------------- |
 | #ID# | TVMaze episode ID |
 | #URL# | TVMaze episode URL |
 | #name# | Name of the episode |
