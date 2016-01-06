@@ -48,11 +48,11 @@ func main() {
 				con.Privmsg(roomName, "help pls")
 			case "show":
 				msg := fmt.Sprintf("Looking up '%s'", split[1])
-				con.Privmsg(roomName, msg)
+				con.Privmsg(e.Arguments[0], msg)
 				ret := tvmaze.ShowLookup(split[1])
-				con.Privmsg(roomName, ret)
+				con.Privmsg(e.Arguments[0], ret)
 			default:
-				con.Privmsg(roomName, "NOPE")
+				con.Privmsg(e.Arguments[0], "NOPE")
 			}
 		}
 	})
