@@ -13,6 +13,18 @@ vi .env
 
 `go run cli/app/main.go`
 
+### Description
+
+This is a small project for me to learn Go.
+
+It uses the TVMaze API and also OMDB for film information.
+
+The current commands for the bot are...
+
+`!show <search>` e.g. `!show brooklyn nine nine` _also has an alias_ `!tv`
+
+`!film <search>` e.g. `!film gladiator` _also has an alias_ `!movie`
+
 ### .env options
 
 ```
@@ -22,6 +34,7 @@ CHANS=
 NETWORK=
 SHOWSTRING=
 EPSTRING=
+FILMSTRING=
 HUMANIZE=
 ```
 
@@ -33,14 +46,15 @@ CHANS="#botchan"
 NETWORK=irc.network.net:6667
 SHOWSTRING="\u0002#showname#\u0002 | Next: #nextEp# | Prev: #previousEp# | Premiered: #premiered#"
 EPSTRING="#airdate# - #season#x#episode# - #name#"
+FILMSTRING="#title# - #plot# - #runtime# - #genre# - #imdb-rating#/10 - #imdb-ID#"
 HUMANIZE=1
 ```
 
 This will output the following:
 ```
 <jaaaaaaaaaam>    !show gotham
-<jambot>          Looking up 'gotham'
-<jambot>          Gotham | Next: 1 month from now - 2x12 - Rise of the Villains: Cold, Dark Night | Prev: 1 month ago - 2x11 - Rise of the Villains: Worse Than a Crime | Premiered: 2014-09-22
+<Awesomebot>      Looking up 'gotham'
+<Awesomebot>      Gotham | Next: 1 month from now - 2x12 - Rise of the Villains: Cold, Dark Night | Prev: 1 month ago - 2x11 - Rise of the Villains: Worse Than a Crime | Premiered: 2014-09-22
 ```
 ##### NICK
 
@@ -124,6 +138,32 @@ This is used to format the output of the information for the next episode or pre
 | #airtime# | The episode's airtime |
 | #airstamp# | The full datetime of the episode's airing |
 | #runtime# | The runtime of the episode in minutes |
+
+##### FILMSTRING
+
+This is used to format the output of the !imdb command
+
+| Option | Description |
+| --------- | --------------- |
+| #title# | Film title |
+| #year# | TVMaze episode URL |
+| #rating# | The MPAA film rating |
+| #release# | The release date of the film |
+| #runtime# | The films runtime |
+| #genre# | The genre of the film |
+| #director# | The film's directors |
+| #writer# | The films writers |
+| #actors# | The films actors |
+| #plot# | Short plot of the film |
+| #language# | The films language |
+| #country# | The films countries |
+| #awards# | Awards the film has |
+| #posterURL# | URL for the film poster |
+| #metascore | The films metascore |
+| #imdb-rating# | The films IMDB rating |
+| #imdb-votes# | The films IMDB votes |
+| #imdb-ID# | The url to the IMDB page for the film |
+| #type# | The type of the search query (Film etc) |
 
 ##### HUMANIZE
 

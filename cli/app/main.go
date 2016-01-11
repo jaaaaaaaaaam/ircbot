@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/jaaaaaaaaaam/ircbot/modules/omdb"
 	"github.com/jaaaaaaaaaam/ircbot/modules/tvmaze"
 	"github.com/joho/godotenv"
 	"github.com/thoj/go-ircevent"
@@ -46,10 +47,15 @@ func main() {
 			switch command {
 			case "help":
 				con.Privmsg(roomName, "help pls")
-			case "show":
+			case "show", "tv":
 				msg := fmt.Sprintf("Looking up '%s'", split[1])
 				con.Privmsg(e.Arguments[0], msg)
 				ret := tvmaze.ShowLookup(split[1])
+				con.Privmsg(e.Arguments[0], ret)
+			case "film", "movie":
+				msg := fmt.Sprintf("Looking up '%s'", split[1])
+				con.Privmsg(e.Arguments[0], msg)
+				ret := omdb.FilmLookup(split[1])
 				con.Privmsg(e.Arguments[0], ret)
 			default:
 				con.Privmsg(e.Arguments[0], "NOPE")
