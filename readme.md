@@ -1,5 +1,14 @@
 # ircbot
-IRC Bot created in GO.
+
+This is a small project for me to learn Go.
+
+It uses the TVMaze API and also OMDB for film information.
+
+The current commands for the bot are...
+
+`!show <search>` e.g. `!show brooklyn nine nine` _also has an alias_ `!tv`
+
+`!film <search>` e.g. `!film gladiator` _also has an alias_ `!movie`
 
 ## How to run
 
@@ -12,18 +21,6 @@ vi .env
 ```
 
 `go run cli/app/main.go`
-
-### Description
-
-This is a small project for me to learn Go.
-
-It uses the TVMaze API and also OMDB for film information.
-
-The current commands for the bot are...
-
-`!show <search>` e.g. `!show brooklyn nine nine` _also has an alias_ `!tv`
-
-`!film <search>` e.g. `!film gladiator` _also has an alias_ `!movie`
 
 ### .env options
 
