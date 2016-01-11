@@ -190,3 +190,5 @@ There are currently 3 options.
   - [x] Show the dates in human readable format e.g. (2 days ago, in 3 months, 2 days etc)
   - [ ] Allow users to choose a format for date's if humanization is disabled
   - [ ] Show the user suggestions if their search returns nothing
+- OMDB module
+  - [ ] Filter out not found requests and show an error instead
